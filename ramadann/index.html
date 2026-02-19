@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أهدافي في رمضان</title>
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts للخطوط العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #ffffff;  /* خلفية بيضاء */
+            color: #2e7d32;  /* أخضر غامق للنص */
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* زخارف رمضانية خفيفة جداً */
+        .decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.05;
+        }
+
+        .decoration::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20 20 L30 20 L25 30 Z" fill="%234caf50"/><circle cx="70" cy="70" r="5" fill="%234caf50"/><circle cx="30" cy="80" r="3" fill="%234caf50"/></svg>') repeat;
+            animation: stars 20s linear infinite;
+        }
+
+        @keyframes stars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100%); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* رأس الصفحة */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            background: #f5f5f5;  /* رمادي فاتح جداً */
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
+        }
+
+        .moon {
+            font-size: 60px;
+            color: #4caf50;
+            animation: glow 3s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(76, 175, 80, 0.2); }
+            50% { text-shadow: 0 0 40px rgba(76, 175, 80, 0.3); }
+        }
+
+        h1 {
+            font-size: 48px;
+            font-family: 'Amiri', serif;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: #4caf50;
+            border-bottom: 2px solid #4caf50;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* أهداف سريعة */
+        .quick-goals {
+            background: #fafafa;  /* أبيض مائل للرمادي الفاتح */
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
+            border: 1px solid #c8e6c9;
+        }
+
+        .quick-goals h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .goal-card {
+            background: #ffffff;  /* أبيض ناصع */
+            border-radius: 20px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #a5d6a7;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.15);
+        }
+
+        .goal-icon {
+            font-size: 30px;
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+
+        .goal-card h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-right: 4px solid #4caf50;
+            padding-right: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #eeeeee;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #81c784);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        /* الأذكار */
+        .adhkar-section {
+            background: #fafafa;
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
+            border: 1px solid #c8e6c9;
+        }
+
+        .section-header {
+            color: #2e7d32;
+            font-size: 28px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .adhkar-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .adhkar-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #c8e6c9;
+        }
+
+        .adhkar-card h3 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .dhikr-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 15px;
+            border-right: 4px solid #4caf50;
+        }
+
+        .dhikr-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #2e7d32;
+        }
+
+        .dhikr-count {
+            color: #4caf50;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .counter-btn {
+            background: #4caf50;
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .counter-btn:hover {
+            transform: scale(1.1);
+            background: #2e7d32;
+        }
+
+        /* السنن */
+        .sunan-section {
+            background: #fafafa;
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
+            border: 1px solid #c8e6c9;
+        }
+
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .prayer-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid #a5d6a7;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+        }
+
+        .prayer-name {
+            color: #2e7d32;
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sunan-list {
+            list-style: none;
+        }
+
+        .sunan-list li {
+            margin-bottom: 12px;
+            padding: 8px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sunan-list i.fa-check-circle {
+            color: #4caf50;
+        }
+
+        .sunan-list i.fa-circle {
+            color: #81c784;
+        }
+
+        .muakkadah {
+            border-right: 3px solid #2e7d32;
+        }
+
+        .ghair-muakkadah {
+            border-right: 3px solid #81c784;
+        }
+
+        /* قسم الموازنة */
+        .balance-section {
+            background: #fafafa;
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid #4caf50;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
+        }
+
+        .balance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .balance-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #c8e6c9;
+        }
+
+        .balance-card.worship {
+            border-top: 5px solid #2e7d32;
+        }
+
+        .balance-card.habits {
+            border-top: 5px solid #4caf50;
+        }
+
+        .balance-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 12px;
+        }
+
+        .time-badge {
+            background: #4caf50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .schedule-table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #c8e6c9;
+            background: #ffffff;
+        }
+
+        .schedule-time {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        /* متتبع الأهداف */
+        .tracker-section {
+            background: #fafafa;
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
+            border: 1px solid #c8e6c9;
+        }
+
+        .tracker-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tracker-item input[type="checkbox"] {
+            width: 25px;
+            height: 25px;
+            accent-color: #4caf50;
+            cursor: pointer;
+        }
+
+        .tracker-item label {
+            font-size: 20px;
+            flex: 1;
+            cursor: pointer;
+            color: #2e7d32;
+        }
+
+        .quran-tracker {
+            background: #ffffff;
+            border: 2px solid #4caf50;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .juz-counter {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+
+        .juz-buttons button {
+            background: #4caf50;
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+
+        .juz-buttons button:hover {
+            background: #2e7d32;
+        }
+
+        /* التذكير */
+        .reminder-box {
+            background: #f5f5f5;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            border: 2px dashed #4caf50;
+        }
+
+        /* التذييل */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 2px solid #c8e6c9;
+            color: #2e7d32;
+        }
+
+        /* استعلامات الوسائط */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            .adhkar-container,
+            .balance-grid {
+                grid-template-columns: 1fr;
+            }
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration"></div>
+    
+    <div class="container">
+        <!-- الهيدر -->
+        <div class="header">
+            <div class="moon">🌙</div>
+            <h1>أهدافي في رمضان</h1>
+            <p>رمضان 1446 هـ - 2025 م</p>
+        </div>
+
+        <!-- أهداف سريعة -->
+        <div class="quick-goals">
+            <h2><i class="fas fa-bullseye" style="color: #4caf50;"></i> أهدافي الرئيسية</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-icon"><i class="fas fa-quran"></i></div>
+                    <h3>ختم القرآن</h3>
+                    <p>هدف: ختمة كاملة</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <p><span id="current-juz">0</span>/30 جزء</p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon"><i class="fas fa-mosque"></i></div>
+                    <h3>الصلاة في وقتها</h3>
+                    <p>الصلوات الخمس + السنن الرواتب</p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon"><i class="fas fa-moon"></i></div>
+                    <h3>قيام الليل</h3>
+                    <p>التهجد والدعاء</p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>الدراسة</h3>
+                    <p>ساعتين يومياً بأوقات الذروة</p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon"><i class="fas fa-cube"></i></div>
+                    <h3>تعلم Blender</h3>
+                    <p>٣٠ دقيقة يومياً</p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon"><i class="fas fa-podcast"></i></div>
+                    <h3>بودكاست ديني</h3>
+                    <p>أثناء المشي أو الأعمال</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الموازنة -->
+        <div class="balance-section">
+            <h2 class="section-header"><i class="fas fa-scale-balanced"></i> الموازنة بين العبادات والعادات</h2>
+            
+            <div class="balance-grid">
+                <!-- جدول العبادات -->
+                <div class="balance-card worship">
+                    <h3 style="color: #2e7d32; margin-bottom: 20px;"><i class="fas fa-mosque"></i> العبادات الأساسية</h3>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-check-circle" style="color: #4caf50;"></i> صلاة الفجر + سنة الفجر</span>
+                        <span class="time-badge">١٥ دقيقة</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-check-circle" style="color: #4caf50;"></i> صلاة الظهر + سننها (٤ قبل + ٢ بعد)</span>
+                        <span class="time-badge">٢٠ دقيقة</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-check-circle" style="color: #4caf50;"></i> صلاة العصر + سنة قبلها</span>
+                        <span class="time-badge">١٠ دقائق</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-check-circle" style="color: #4caf50;"></i> صلاة المغرب + سنتها</span>
+                        <span class="time-badge">١٠ دقائق</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-check-circle" style="color: #4caf50;"></i> صلاة العشاء + سننها + وتر</span>
+                        <span class="time-badge">٢٥ دقيقة</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-check-circle" style="color: #4caf50;"></i> قراءة القرآن (ورد يومي)</span>
+                        <span class="time-badge">٣٠ دقيقة</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-check-circle" style="color: #4caf50;"></i> أذكار الصباح والمساء</span>
+                        <span class="time-badge">١٥ دقيقة</span>
+                    </div>
+                </div>
+
+                <!-- جدول العادات والمهارات -->
+                <div class="balance-card habits">
+                    <h3 style="color: #4caf50; margin-bottom: 20px;"><i class="fas fa-clock"></i> العادات والمهارات</h3>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-book"></i> الدراسة (مواد كلية / تخصص)</span>
+                        <span class="time-badge">ساعتين</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-cube"></i> تعلم Blender</span>
+                        <span class="time-badge">٣٠ دقيقة</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-headphones"></i> بودكاست (تعلم أو ديني)</span>
+                        <span class="time-badge">ساعة</span>
+                    </div>
+                    
+                    
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-utensils"></i> تحضير الإفطار والسحور</span>
+                        <span class="time-badge">ساعة</span>
+                    </div>
+                    
+                    <div class="balance-item">
+                        <span><i class="fas fa-bed"></i> قيلولة (نشاط بعدها)</span>
+                        <span class="time-badge">ساعة</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- جدول يومي مقترح -->
+            <div style="margin-top: 30px; background: #ffffff; padding: 20px; border-radius: 15px; border: 1px solid #c8e6c9;">
+                <h3 style="color: #2e7d32; margin-bottom: 20px;"><i class="fas fa-calendar-alt"></i> الجدول اليومي المتوازن</h3>
+                
+                <div class="schedule-table">
+                    <div class="schedule-row">
+                        <span class="schedule-time">٣:٣٠ - ٤:٠٠ ص</span>
+                        <span>سحور + قيام ليل</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">٤:٠٠ - ٥:٠٠ ص</span>
+                        <span>صلاة الفجر + أذكار + ورد قرآن</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">٥:٠٠ - ٧:٠٠ ص</span>
+                        <span>دراسة (وقت ذهبي - عالي التركيز)</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">٧:٠٠ - ١١:٠٠ ص</span>
+                        <span>نوم + قيلولة</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">١١:٠٠ - ١٢:٠٠ م</span>
+                        <span>صلاة الظهر + سننها + استعداد</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">١٢:٠٠ - ٣:٠٠ م</span>
+                        <span>دراسة / تعلم Blender / أعمال</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">٣:٠٠ - ٤:٠٠ م</span>
+                        <span>صلاة العصر + أذكار + راحة</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">٤:٠٠ - ٦:٠٠ م</span>
+                        <span>تحضير إفطار + تواصل اجتماعي</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">٦:٠٠ - ٨:٠٠ م</span>
+                        <span>إفطار + صلاة مغرب + عشاء</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">٨:٠٠ - ١٠:٠٠ م</span>
+                        <span>تراويح + قيام + ورد قرآن</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-time">١٠:٠٠ - ١٢:٠٠ م</span>
+                        <span>وقت حر / تعلم / قراءة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأذكار -->
+        <div class="adhkar-section">
+            <h2 class="section-header"><i class="fas fa-dhikr"></i> أذكار الصباح والمساء</h2>
+            
+            <div class="adhkar-container">
+                <!-- أذكار الصباح -->
+                <div class="adhkar-card">
+                    <h3>أذكار الصباح</h3>
+                    
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له...</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 1</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">اللهم بك أصبحنا، وبك أمسينا، وبك نحيا، وبك نموت، وإليك النشور</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 1</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">آية الكرسي - أعوذ بالله السميع العليم من الشيطان الرجيم</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 1</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">سورة الإخلاص والمعوذتين</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 3</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أذكار المساء -->
+                <div class="adhkar-card">
+                    <h3>أذكار المساء</h3>
+                    
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له...</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 1</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 1</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">أعوذ بكلمات الله التامات من شر ما خلق</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 3</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="dhikr-item">
+                        <div class="dhikr-text">اللهم إني أسألك العفو والعافية في الدنيا والآخرة</div>
+                        <div class="dhikr-count">
+                            <span>العدد: 3</span>
+                            <button class="counter-btn" onclick="incrementCounter(this)"><i class="fas fa-plus"></i></button>
+                            <span class="counter-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- السنن -->
+        <div class="sunan-section">
+            <h2 class="section-header"><i class="fas fa-pray"></i> السنن الرواتب (التابعة للصلوات)</h2>
+            
+            <div class="prayer-grid">
+                <!-- الفجر -->
+                <div class="prayer-card">
+                    <div class="prayer-name"><i class="fas fa-sun"></i> صلاة الفجر</div>
+                    <ul class="sunan-list">
+                        <li class="muakkadah"><i class="fas fa-check-circle"></i> سنة الفجر (ركعتان قبل الصلاة) - سنة مؤكدة</li>
+                        <li><i class="fas fa-info-circle"></i> "ركعتا الفجر خير من الدنيا وما فيها"</li>
+                    </ul>
+                </div>
+
+                <!-- الظهر -->
+                <div class="prayer-card">
+                    <div class="prayer-name"><i class="fas fa-sun"></i> صلاة الظهر</div>
+                    <ul class="sunan-list">
+                        <li class="muakkadah"><i class="fas fa-check-circle"></i> ٤ ركعات قبل الظهر - سنة مؤكدة</li>
+                        <li class="muakkadah"><i class="fas fa-check-circle"></i> ٢ ركعة بعد الظهر - سنة مؤكدة</li>
+                        <li class="ghair-muakkadah"><i class="fas fa-circle"></i> ٢ ركعة إضافية بعد الظهر (تصلى بتسليمة) - سنة غير مؤكدة</li>
+                    </ul>
+                </div>
+
+                <!-- العصر -->
+                <div class="prayer-card">
+                    <div class="prayer-name"><i class="fas fa-cloud-sun"></i> صلاة العصر</div>
+                    <ul class="sunan-list">
+                        <li class="ghair-muakkadah"><i class="fas fa-circle"></i> ٤ ركعات قبل العصر (مندوبة)</li>
+                        <li><i class="fas fa-info-circle"></i> لا سنة بعد العصر (وقت نهي)</li>
+                    </ul>
+                </div>
+
+                <!-- المغرب -->
+                <div class="prayer-card">
+                    <div class="prayer-name"><i class="fas fa-moon"></i> صلاة المغرب</div>
+                    <ul class="sunan-list">
+                        <li class="muakkadah"><i class="fas fa-check-circle"></i> ٢ ركعة بعد المغرب - سنة مؤكدة</li>
+                        <li class="ghair-muakkadah"><i class="fas fa-circle"></i> ٤ ركعات قبل المغرب (للمسارعة) - سنة غير مؤكدة</li>
+                    </ul>
+                </div>
+
+                <!-- العشاء -->
+                <div class="prayer-card">
+                    <div class="prayer-name"><i class="fas fa-star"></i> صلاة العشاء</div>
+                    <ul class="sunan-list">
+                        <li class="muakkadah"><i class="fas fa-check-circle"></i> ٢ ركعة بعد العشاء - سنة مؤكدة</li>
+                        <li class="muakkadah"><i class="fas fa-check-circle"></i> ٤ ركعات قبل العشاء - سنة مؤكدة</li>
+                        <li class="ghair-muakkadah"><i class="fas fa-circle"></i> ٢ ركعة إضافية بعد العشاء (بتسليمة) - سنة غير مؤكدة</li>
+                        <li class="muakkadah"><i class="fas fa-check-circle"></i> الشفع والوتر (صلاة الليل) - سنة مؤكدة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding: 20px; background: #ffffff; border-radius: 15px; border: 1px solid #c8e6c9;">
+                <p><i class="fas fa-star" style="color: #2e7d32;"></i> <strong>السنن المؤكدة:</strong> ١٠ ركعات: ٢ قبل الفجر + ٤ قبل الظهر + ٢ بعد الظهر + ٢ بعد المغرب + ٢ بعد العشاء</p>
+                <p><i class="fas fa-star" style="color: #4caf50;"></i> <strong>السنن غير المؤكدة:</strong> ٤ قبل العصر، ٤ قبل المغرب، ٤ قبل العشاء، ٢ بعد الظهر (إضافية)، ٢ بعد العشاء (إضافية)</p>
+            </div>
+        </div>
+
+        <!-- متتبع الأهداف اليومي -->
+        <div class="tracker-section">
+            <h2 class="section-header"><i class="fas fa-tasks"></i> متابعتي اليومية</h2>
+            
+            <div class="tracker-item">
+                <input type="checkbox" id="quran" onclick="updateProgress()">
+                <label for="quran"><i class="fas fa-quran" style="color: #4caf50; margin-left: 10px;"></i>قراءة ورد القرآن اليومي (٣٠ دقيقة)</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="fajr-sunan" onclick="updateProgress()">
+                <label for="fajr-sunan"><i class="fas fa-mosque" style="color: #4caf50; margin-left: 10px;"></i>صلاة الفجر + سنة الفجر</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="dhuhr-sunan" onclick="updateProgress()">
+                <label for="dhuhr-sunan"><i class="fas fa-mosque" style="color: #4caf50; margin-left: 10px;"></i>صلاة الظهر + السنن (٤ قبل + ٢ بعد)</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="asr-sunan" onclick="updateProgress()">
+                <label for="asr-sunan"><i class="fas fa-mosque" style="color: #4caf50; margin-left: 10px;"></i>صلاة العصر + سنة قبلها</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="maghrib-sunan" onclick="updateProgress()">
+                <label for="maghrib-sunan"><i class="fas fa-mosque" style="color: #4caf50; margin-left: 10px;"></i>صلاة المغرب + سنتها</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="isha-sunan" onclick="updateProgress()">
+                <label for="isha-sunan"><i class="fas fa-mosque" style="color: #4caf50; margin-left: 10px;"></i>صلاة العشاء + سننها + وتر</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="tahajjud" onclick="updateProgress()">
+                <label for="tahajjud"><i class="fas fa-moon" style="color: #4caf50; margin-left: 10px;"></i>قيام الليل / تهجد</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="morning-adhkar" onclick="updateProgress()">
+                <label for="morning-adhkar"><i class="fas fa-sun" style="color: #4caf50; margin-left: 10px;"></i>أذكار الصباح</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="evening-adhkar" onclick="updateProgress()">
+                <label for="evening-adhkar"><i class="fas fa-moon" style="color: #4caf50; margin-left: 10px;"></i>أذكار المساء</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="study" onclick="updateProgress()">
+                <label for="study"><i class="fas fa-book" style="color: #4caf50; margin-left: 10px;"></i>الدراسة (ساعتين)</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="blender" onclick="updateProgress()">
+                <label for="blender"><i class="fas fa-cube" style="color: #4caf50; margin-left: 10px;"></i>تعلم Blender (٣٠ دقيقة)</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="podcast" onclick="updateProgress()">
+                <label for="podcast"><i class="fas fa-podcast" style="color: #4caf50; margin-left: 10px;"></i>الاستماع لبودكاست ديني / تعلمي</label>
+            </div>
+
+            <div class="tracker-item">
+                <input type="checkbox" id="sport" onclick="updateProgress()">
+                <label for="sport"><i class="fas fa-walking" style="color: #4caf50; margin-left: 10px;"></i>رياضة / مشي (٣٠ دقيقة)</label>
+            </div>
+
+            <!-- تتبع ختم القرآن -->
+            <div class="quran-tracker">
+                <h3 style="color: #2e7d32; margin-bottom: 15px;"><i class="fas fa-quran"></i> تقدم ختم القرآن</h3>
+                <div class="juz-counter">
+                    <span>الأجزاء المنجزة: <span id="juz-count">0</span>/30</span>
+                    <div class="juz-buttons">
+                        <button onclick="changeJuz(-1)"><i class="fas fa-minus"></i></button>
+                        <button onclick="changeJuz(1)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="progress-bar" style="margin: 15px 0;">
+                    <div class="progress-fill" id="quran-progress" style="width: 0%;"></div>
+                </div>
+                <p style="color: #2e7d32;">الباقي: <span id="remaining-juz">30</span> جزء</p>
+            </div>
+        </div>
+
+        <!-- تذكير -->
+        <div class="reminder-box">
+            <i class="fas fa-heart" style="color: #4caf50; font-size: 40px; margin-bottom: 15px;"></i>
+            <p style="font-size: 20px; color: #2e7d32;">اللهم بلغنا رمضان وأعنا على صيامه وقيامه على الوجه الذي يرضيك عنا</p>
+            <p style="margin-top: 15px; color: #4caf50;">🌙 اجمع بين العبادة وتطوير الذات بنية صالحة 🌙</p>
+        </div>
+
+        <!-- التذييل -->
+        <div class="footer">
+            <p>🌙 هذا الموقع الشخصي لأهدافي في رمضان - أبيض مع أخضر فاتح مريح للعين 🌙</p>
+        </div>
+    </div>
+
+    <script>
+        // متغيرات
+        let juzCompleted = 0;
+
+        // تحديث التقدم العام
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.tracker-item input[type="checkbox"]');
+            let completed = 0;
+            
+            checkboxes.forEach(cb => {
+                if (cb.checked) completed++;
+            });
+            
+            const total = checkboxes.length;
+            const percentage = (completed / total) * 100;
+            
+            console.log(`تم إنجاز ${completed} من ${total} هدف (${percentage.toFixed(1)}%)`);
+        }
+
+        // عداد الأذكار
+        function incrementCounter(btn) {
+            const counterSpan = btn.parentElement.querySelector('.counter-value');
+            let current = parseInt(counterSpan.textContent);
+            counterSpan.textContent = current + 1;
+        }
+
+        // تغيير عدد أجزاء القرآن
+        function changeJuz(delta) {
+            juzCompleted = Math.max(0, Math.min(30, juzCompleted + delta));
+            
+            document.getElementById('juz-count').textContent = juzCompleted;
+            document.getElementById('remaining-juz').textContent = 30 - juzCompleted;
+            
+            const progress = (juzCompleted / 30) * 100;
+            document.getElementById('quran-progress').style.width = progress + '%';
+            
+            const quranGoalBar = document.querySelector('.goal-card:first-child .progress-fill');
+            if (quranGoalBar) {
+                quranGoalBar.style.width = progress + '%';
+            }
+            
+            const currentJuzSpan = document.getElementById('current-juz');
+            if (currentJuzSpan) {
+                currentJuzSpan.textContent = juzCompleted;
+            }
+        }
+
+        // تفعيل عند تحميل الصفحة
+        window.onload = function() {
+            const checkboxes = document.querySelectorAll('.tracker-item input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', updateProgress);
+            });
+            
+            changeJuz(0);
+        };
+    </script>
+</body>
+</html>
